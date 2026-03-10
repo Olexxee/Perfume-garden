@@ -24,7 +24,7 @@ export default function MenuList({ activeTab }: MenuListProps): JSX.Element {
       setIsLoading(true);
       setError("");
       try {
-        const data: MenuItemType[] = await apiClient("/menu");
+        const data: MenuItemType[] = await apiClient("/api/menu");
         setMenuItems(data);
       } catch (err) {
         console.error("Failed to fetch menu", err);
