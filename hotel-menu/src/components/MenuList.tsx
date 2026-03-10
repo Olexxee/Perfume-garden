@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import type { MenuItemType, MenuCategory } from "../types/menu";
 import type { JSX } from "react";
-import apiClient from "../services/apiClient";
+import { fetchMenu } from "../services/menuService";
 
 interface MenuListProps {
   activeTab: MenuCategory;
@@ -24,7 +24,7 @@ export default function MenuList({ activeTab }: MenuListProps): JSX.Element {
       setIsLoading(true);
       setError("");
       try {
-        const data: MenuItemType[] = await apiClient("/api/menu");
+        const data = await fetchMenu();
         setMenuItems(data);
       } catch (err) {
         console.error("Failed to fetch menu", err);
