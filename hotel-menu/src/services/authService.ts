@@ -1,13 +1,19 @@
-import { apiClient } from "./apiClient";
+import apiClient from "./apiClient";
 
-export const loginAdmin = async (email: string, password: string) => {
-  const data = await apiClient("/api/admin/login", {
+interface AdminAuthResponse {
+  token: string;
+}
+
+export const loginAdmin = async (
+  email: string,
+  password: string
+): Promise<AdminAuthResponse> => {
+  const data = await apiClient("/admin/login", {
     method: "POST",
     body: JSON.stringify({ email, password }),
   });
 
   localStorage.setItem("token", data.token);
-
   return data;
 };
 
