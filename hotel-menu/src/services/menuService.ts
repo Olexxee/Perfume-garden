@@ -4,7 +4,7 @@ import type { MenuItemType } from "../types/menu";
 /* ---------- FETCH MENU (PUBLIC) ---------- */
 
 export const fetchMenu = async (): Promise<MenuItemType[]> => {
-  return apiClient("/menu");
+  return apiClient("/menu/");
 };
 
 /* ---------- CREATE ITEM ---------- */
@@ -12,7 +12,7 @@ export const fetchMenu = async (): Promise<MenuItemType[]> => {
 export const createMenuItem = async (
   data: Omit<MenuItemType, "id">
 ): Promise<MenuItemType> => {
-  return apiClient("/menu", {
+  return apiClient("/menu/", {
     method: "POST",
     body: JSON.stringify(data),
   });
