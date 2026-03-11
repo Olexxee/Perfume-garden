@@ -67,6 +67,7 @@ export default function AdminPage() {
                 name,
                 price: Number(price),
                 category,
+                _id: ""
             });
 
             setMenuItems((prev) => [...prev, newItem]);
@@ -91,7 +92,6 @@ export default function AdminPage() {
 
     const handleDelete = async (id: string) => {
         await deleteMenuItem(id);
-
         setMenuItems((prev) => prev.filter((item) => item.id !== id));
     };
 
